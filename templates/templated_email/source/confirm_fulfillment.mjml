@@ -34,13 +34,6 @@
             {% endif %}
           {% endif %}
         </mj-text>
-        <mj-text>
-          {% if digital_lines %}
-            {% blocktrans trimmed context "Fulfillment digital products email text" %}
-              You can download your digital products by clicking in download link(s).
-            {% endblocktrans %}
-          {% endif %}
-        </mj-text>
       </mj-column>
     </mj-section>
     <mj-include path="./partials/_fulfillment_lines.mjml" />

@@ -28,7 +28,7 @@ You can track your shipment with {{ tracking_number }} code.
 {% endfor %}
 
 {% for line in digital_lines %}
-{{ line.quantity }} x {{ line.order_line.digital_content_url.get_absolute_url }}
+{{ line.quantity }} x {{ line.order_line }}
 {% endfor %}
 
 {% include 'templated_email/shared/_footer.email' %}
