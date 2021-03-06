@@ -27,6 +27,7 @@ __pycache__/
 build/
 coverage/
 dist/
+saleor-venv/
 *\.egg*
 # data
 /media/

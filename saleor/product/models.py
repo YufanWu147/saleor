@@ -104,8 +104,8 @@ class ProductType(ModelWithMetadata):
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=255, unique=True, allow_unicode=True)
     has_variants = models.BooleanField(default=True)
-    is_shipping_required = models.BooleanField(default=True)
-    is_digital = models.BooleanField(default=False)
+    is_shipping_required = models.BooleanField(default=False)
+    is_digital = models.BooleanField(default=True)
     weight = MeasurementField(
         measurement=Weight, unit_choices=WeightUnits.CHOICES, default=zero_weight
     )
@@ -575,15 +575,15 @@ class ProductVariantChannelListing(models.Model):
 class DigitalContent(ModelWithMetadata):
     FILE = "file"
     TYPE_CHOICES = ((FILE, "digital_product"),)
-    use_default_settings = models.BooleanField(default=True)
-    automatic_fulfillment = models.BooleanField(default=False)
+    use_default_settings = models.BooleanField(default=False)
+    automatic_fulfillment = models.BooleanField(default=True)
     content_type = models.CharField(max_length=128, default=FILE, choices=TYPE_CHOICES)
     product_variant = models.OneToOneField(
         ProductVariant, related_name="digital_content", on_delete=models.CASCADE
     )
-    content_file = models.FileField(upload_to="digital_contents", blank=True)
-    max_downloads = models.IntegerField(blank=True, null=True)
-    url_valid_days = models.IntegerField(blank=True, null=True)
+    content_file = models.FileField(upload_to="digital_contents", blank=True, default="shop.gethookedseafood.com")
+    max_downloads = models.IntegerField(blank=True, null=True, default=10)
+    url_valid_days = models.IntegerField(blank=True, null=True, default=10)
 
     def create_new_url(self) -> "DigitalContentUrl":
         return self.urls.create()
