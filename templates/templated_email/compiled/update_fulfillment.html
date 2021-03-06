@@ -198,26 +198,7 @@
           </tbody>
         </table>
       {% endif %}
-      {% if digital_lines %}
-        <table style="width:100%">
-          <thead class="table-header-row" style="border-bottom: 2px solid #000;">
-            <tr>
-              <th style="padding: 5px; text-align: left;" align="left">{% trans "Item" context "Ordered item name" %}</th>
-              <th style="padding: 5px; text-align: right;" align="right">{% trans "Download Link" context "Ordered item download links" %}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for line in digital_lines %}
-              <tr class="table-item-row" style="border-bottom: 1px solid #D3D1D0;">
-                <td style="padding: 5px;">{% display_translated_order_line_name line.order_line %}</td>
-                <td style="padding: 5px; text-align: right;" align="right">
-                  <a href="{{ line.order_line.digital_content_url.get_absolute_url }}">Link</a>
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      {% endif %}</div>
+      </div>
     
               </td>
             </tr>
